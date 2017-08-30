@@ -17,6 +17,7 @@ import java.util.UUID;
 
 import ab.byteshiftserverv1.Constants;
 import ab.byteshiftserverv1.ui.MainActivity;
+import ab.byteshiftserverv1.ui.SignLogIn;
 
 /**
  * Created by arlen on 8/30/17.
@@ -26,7 +27,7 @@ public class BeaconNotificationManager extends Application {
     private BeaconManager beaconManager;
 
     public void showNotification(String title, String message){
-        Intent notifyIntent = new Intent(this, MainActivity.class);
+        Intent notifyIntent = new Intent(this, SignLogIn.class);
         notifyIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivities(this, 0, new Intent[] {notifyIntent}, PendingIntent.FLAG_UPDATE_CURRENT);
         Notification notification = new Notification.Builder(this)

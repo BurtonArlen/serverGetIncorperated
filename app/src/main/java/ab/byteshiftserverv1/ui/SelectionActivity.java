@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.estimote.sdk.SystemRequirementsChecker;
+
 import ab.byteshiftserverv1.R;
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -32,6 +34,7 @@ public class SelectionActivity extends AppCompatActivity implements View.OnClick
         mRewardDemoButton.setOnClickListener(this);
         mUserDemoButton.setOnClickListener(this);
         openAnimation1();
+        SystemRequirementsChecker.checkWithDefaultDialogs(this);
     }
 
 
@@ -78,6 +81,11 @@ public class SelectionActivity extends AppCompatActivity implements View.OnClick
         mUserDemoButton.animate().translationY(3000).translationX(0).setDuration(1);
         openAnimation2();
         logoAnim1();
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
     }
 
     @Override
@@ -133,4 +141,5 @@ public class SelectionActivity extends AppCompatActivity implements View.OnClick
             }, 600);
         }
     }
+
 }

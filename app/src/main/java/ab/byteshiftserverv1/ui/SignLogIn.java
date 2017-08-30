@@ -1,5 +1,6 @@
 package ab.byteshiftserverv1.ui;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -44,6 +45,8 @@ public class SignLogIn extends AppCompatActivity implements View.OnClickListener
         mTitleText.setText("Log In");
         mNoAccountText1.setText("Don't have an account?");
         mNoAccountText2.setText("Sign up here!");
+        mSignLogButton.setText("Log In");
+        emptyEdits();
     }
     
     public void signUpMode(){
@@ -52,6 +55,14 @@ public class SignLogIn extends AppCompatActivity implements View.OnClickListener
         mTitleText.setText("Sign Up");
         mNoAccountText1.setText("Already have an account?");
         mNoAccountText2.setText("Log in here!");
+        mSignLogButton.setText("Sign Up");
+        emptyEdits();
+    }
+
+    public void emptyEdits(){
+        mEmailEnter.setText("");
+        mPasswordEnter.setText("");
+        mPasswordConfirm.setText("");
     }
     
     public void checkAuth(){
@@ -80,12 +91,19 @@ public class SignLogIn extends AppCompatActivity implements View.OnClickListener
             // TODO: 8/30/17 send email, password, and password confirmation to server for user creation 
             // TODO: 8/30/17 return user data and send to Tutorial Activity 
         }
+        emptyEdits();
+        Intent intent = new Intent(SignLogIn.this , SelectionActivity.class);
+        startActivity(intent);
     }
     
     @Override
     public void onClick(View v){
         if ((v == mNoAccountText1)||(v == mNoAccountText2)){
-            signUpMode();
+            if (authStateBoolean){
+                signUpMode();
+            } else {
+                logInMode();
+            }
         }
         if (v == mSignLogButton){
             checkAuth();
