@@ -52,7 +52,7 @@ public class BeaconNotificationManager extends Application {
             public void onEnteredRegion(Region region, List<Beacon> list) {
                 Log.d("logging region", Constants.BEACON_UUID);
                 showNotification(
-                        "Welcome to the Byteshift Demo", "Tap the notification to continue");
+                        "Welcome to LOCATION", "Tap the notification to sign in");
             }
             @Override
             public void onExitedRegion(Region region) {

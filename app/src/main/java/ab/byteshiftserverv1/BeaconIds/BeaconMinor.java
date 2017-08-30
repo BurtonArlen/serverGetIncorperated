@@ -1,4 +1,4 @@
-package ab.byteshiftserverv1;
+package ab.byteshiftserverv1.BeaconIds;
 
 /**
  * Created by arlen on 8/30/17.

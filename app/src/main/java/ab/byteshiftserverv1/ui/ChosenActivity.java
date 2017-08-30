@@ -1,7 +1,5 @@
 package ab.byteshiftserverv1.ui;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,8 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import ab.byteshiftserverv1.BeaconMajor;
-import ab.byteshiftserverv1.BeaconMinor;
+import ab.byteshiftserverv1.BeaconIds.BeaconMajor;
+import ab.byteshiftserverv1.BeaconIds.BeaconMinor;
 import ab.byteshiftserverv1.Constants;
 import ab.byteshiftserverv1.R;
 import ab.byteshiftserverv1.model.Beacon;

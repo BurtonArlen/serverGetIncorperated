@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ab.byteshiftserverv1">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -24,7 +24,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.SelectionActivity" />
-        <activity android:name=".ui.ChosenActivity"></activity>
+        <activity android:name=".ui.ChosenActivity" />
+        <activity android:name=".ui.SignLogIn"></activity>
     </application>
 
 </manifest>
