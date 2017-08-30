@@ -12,12 +12,20 @@ import android.widget.Toast;
 
 import com.estimote.sdk.SystemRequirementsChecker;
 
+import java.io.IOException;
+import java.util.ArrayList;
+
 import ab.byteshiftserverv1.R;
+import ab.byteshiftserverv1.model.User;
+import ab.byteshiftserverv1.service.ApiService;
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
-
+    public ArrayList<User> mUsers = new ArrayList<>();
     private ProgressDialog mDialog;
     String TAG = MainActivity.class.getSimpleName();
 
@@ -29,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        getUsers();
         openAnimationLogo();
         createProgressDialog();
     }
@@ -36,6 +45,40 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
+    }
+
+    private void getUsers() {
+        final ApiService serverService = new ApiService();
+        serverService.getUsers(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                mUsers = serverService.processUserResults(response);
+                MainActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        String[] userNames = new String[mUsers.size()];
+                        String[] userIds = new String[mUsers.size()];
+                        String[] userEmail = new String[mUsers.size()];
+                        String[] userStatus = new String[mUsers.size()];
+                        for (int i = 0; i < userNames.length; i++) {
+                            userNames[i] = mUsers.get(i).getFirstName() + " " + mUsers.get(i).getLastName();
+                            userIds[i] = mUsers.get(i).getUserId();
+                            userEmail[i] = mUsers.get(i).getUserEmail();
+                            userStatus[i] = mUsers.get(i).getUserStatus();
+                            Log.d("userName", userNames[i]);
+                            Log.d("userId", userIds[i]);
+                            Log.d("userEmail", userEmail[i]);
+                            Log.d("userStatus", userStatus[i]);
+                        }
+                    }
+                });
+            }
+        });
     }
 
     private void createProgressDialog() {

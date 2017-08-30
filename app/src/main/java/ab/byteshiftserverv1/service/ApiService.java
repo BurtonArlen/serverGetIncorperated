@@ -7,6 +7,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import ab.byteshiftserverv1.Constants;
 import ab.byteshiftserverv1.model.Beacon;
 import ab.byteshiftserverv1.model.User;
 import ab.byteshiftserverv1.model.Visit;
